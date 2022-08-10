@@ -7,7 +7,6 @@ import com.central.search.service.ISearchService;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.search.sort.SortOrder;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -36,7 +35,7 @@ public class SearchServiceImpl implements ISearchService {
     public PageResult<JsonNode> strQuery(String indexName, SearchDto searchDto) throws IOException {
         return SearchBuilder.builder(client, indexName)
                 .setStringQuery(searchDto.getQueryStr())
-                .addSort(searchDto.getSortCol(), SortOrder.DESC)
+                .addSort(searchDto.getSortCol(), searchDto.getSortOrder())
                 .setIsHighlight(searchDto.getIsHighlighter())
                 .getPage(searchDto.getPage(), searchDto.getLimit());
     }
