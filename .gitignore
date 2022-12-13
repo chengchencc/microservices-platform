@@ -3,5 +3,8 @@ logs/
 target/
 .txlcn/
 
+zlt-register/nacos/data/
+zlt-register/nacos/data/
 *.iml
 *.versionsBackup
+*.log
