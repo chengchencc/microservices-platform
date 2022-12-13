@@ -191,7 +191,7 @@ public class SysUserServiceImpl extends SuperServiceImpl<SysUserMapper, SysUser>
             list.forEach(u -> u.setRoles(sysRoles.stream().filter(r -> !ObjectUtils.notEqual(u.getId(), r.getUserId()))
                     .collect(Collectors.toList())));
         }
-        return PageResult.<SysUser>builder().data(list).code(0).count(total).build();
+        return PageResult.<SysUser>builder().items(list).code(0).total(total).build();
     }
 
     @Override

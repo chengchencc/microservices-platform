@@ -53,6 +53,9 @@ CREATE TABLE `sys_role`  (
   `create_time` datetime(0) NULL DEFAULT NULL,
   `update_time` datetime(0) NULL DEFAULT NULL,
   `tenant_id` varchar(32) DEFAULT '' COMMENT '租户字段',
+  `status` tinyint NOT NULL COMMENT '状态',
+  `remark` varchar(500) NULL COMMENT '备注',
+  `order_no` int NULL COMMENT '排序号',
   PRIMARY KEY (`id`),
   KEY `idx_code` (`code`),
   KEY `idx_tenant_id` (`tenant_id`)

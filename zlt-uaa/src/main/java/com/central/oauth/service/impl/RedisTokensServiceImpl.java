@@ -72,7 +72,7 @@ public class RedisTokensServiceImpl implements ITokensService {
                 result.add(tokenVo);
             }
         }
-        return PageResult.<TokenVo>builder().data(result).code(0).count(size).build();
+        return PageResult.<TokenVo>builder().items(result).code(0).total(size).build();
     }
 
     /**

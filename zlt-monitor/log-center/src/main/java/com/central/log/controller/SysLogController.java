@@ -57,13 +57,13 @@ public class SysLogController {
     @GetMapping(value = "/traceLog")
     public PageResult<TraceLog> traceLog(SearchDto searchDto) {
         PageResult<JsonNode> pageResult = queryService.strQuery(SYS_LOG_INDEXNAME, searchDto);
-        List<JsonNode> jsonNodeList = pageResult.getData();
+        List<JsonNode> jsonNodeList = pageResult.getItems();
         List<TraceLog> logList;
         if (jsonNodeList != null) {
             logList = traceLogService.transTraceLog(jsonNodeList);
         } else {
             logList = new ArrayList<>(0);
         }
-        return PageResult.<TraceLog>builder().data(logList).code(0).count((long) logList.size()).build();
+        return PageResult.<TraceLog>builder().items(logList).code(0).total((long) logList.size()).build();
     }
 }

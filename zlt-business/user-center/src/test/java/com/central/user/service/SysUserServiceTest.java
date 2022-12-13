@@ -38,6 +38,6 @@ public class SysUserServiceTest {
 		params.put("limit", 10);
 		PageResult<SysUser> page = sysUserService.findUsers(params);
 		assertThat(page).isNotNull();
-		assertThat(page.getCount()).isGreaterThan(0);
+		assertThat(page.getTotal()).isGreaterThan(0);
 	}
 }

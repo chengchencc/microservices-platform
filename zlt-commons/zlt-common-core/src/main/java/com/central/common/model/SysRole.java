@@ -18,4 +18,9 @@ public class SysRole extends SuperEntity {
     private String name;
     @TableField(exist = false)
     private Long userId;
+
+    private Boolean status;
+    private String remark;
+    private Integer orderNo;
+
 }

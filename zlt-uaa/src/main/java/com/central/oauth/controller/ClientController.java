@@ -45,7 +45,7 @@ public class ClientController {
     @ApiOperation(value = "所有应用")
     public Result<List<Client>> allClient() {
         PageResult<Client> page = clientService.listClient(Maps.newHashMap(), false);
-        return Result.succeed(page.getData());
+        return Result.succeed(page.getItems());
     }
 
     @DeleteMapping("/{id}")

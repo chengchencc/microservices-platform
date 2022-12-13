@@ -131,4 +131,8 @@ public interface CommonConstant {
      * 文件分隔符
      */
     String PATH_SPLIT = "/";
+
+    String PAGE_NO ="pageNo";
+    String PAGE_SIZE = "pageSize";
+
 }

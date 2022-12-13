@@ -205,9 +205,9 @@ public class ApiController {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Result> response = restTemplate.exchange(jwtKeyUri, HttpMethod.GET, request, Result.class);
         Result<String> result = response.getBody();
-        Assert.isTrue((result.getResp_code() == 0), result.getResp_msg());
+        Assert.isTrue((result.getCode() == 0), result.getMessage());
 
-        String publicKeyStr = result.getResp_msg();
+        String publicKeyStr = result.getMessage();
         publicKeyStr = publicKeyStr.substring(PUBKEY_START.length(), publicKeyStr.indexOf(PUBKEY_END));
         return RsaUtils.getPublicKey(publicKeyStr);
     }

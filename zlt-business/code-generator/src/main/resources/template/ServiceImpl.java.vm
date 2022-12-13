@@ -32,6 +32,6 @@ public class ${className}ServiceImpl extends SuperServiceImpl<${className}Mapper
     public PageResult<${className}> findList(Map<String, Object> params){
         Page<${className}> page = new Page<>(MapUtils.getInteger(params, "page"), MapUtils.getInteger(params, "limit"));
         List<${className}> list  =  baseMapper.findList(page, params);
-        return PageResult.<${className}>builder().data(list).code(0).count(page.getTotal()).build();
+        return PageResult.<${className}>builder().items(list).code(0).total(page.getTotal()).build();
     }
 }
