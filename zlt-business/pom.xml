@@ -18,5 +18,6 @@
         <module>code-generator</module>
         <!-- 搜索中心 -->
         <module>search-center</module>
+        <module>multi-tenant</module>
     </modules>
 </project>

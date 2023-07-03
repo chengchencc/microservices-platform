@@ -84,7 +84,7 @@ spring:
 
 zlt:
   swagger-agg:
-    generate-routes: user,file
+    generate-routes: user,file,auth
   oauth2:
     token:
       store:
