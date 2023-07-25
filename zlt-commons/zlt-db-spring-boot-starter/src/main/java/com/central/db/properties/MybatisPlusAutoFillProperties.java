@@ -35,8 +35,12 @@ public class MybatisPlusAutoFillProperties {
      * 创建时间字段名
      */
     private String createTimeField = "createTime";
+    private String createUserIdField = "createUserId";
+    private String createUserNameField = "createUserName";
     /**
      * 更新时间字段名
      */
     private String updateTimeField = "updateTime";
+    private String updateUserIdField = "updateUserId";
+    private String updateUserNameField = "updateUserName";
 }

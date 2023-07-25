@@ -1,6 +1,7 @@
 package com.central.db.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.central.common.context.LoginUserContextHolder;
 import com.central.db.properties.MybatisPlusAutoFillProperties;
 import org.apache.ibatis.reflection.MetaObject;
 
@@ -43,16 +44,34 @@ public class DateMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-        Object createTime = getFieldValByName(autoFillProperties.getCreateTimeField(), metaObject);
-        Object updateTime = getFieldValByName(autoFillProperties.getUpdateTimeField(), metaObject);
-        if (createTime == null || updateTime == null) {
-            Date date = new Date();
-            if (createTime == null) {
-                setFieldValByName(autoFillProperties.getCreateTimeField(), date, metaObject);
-            }
-            if (updateTime == null) {
-                setFieldValByName(autoFillProperties.getUpdateTimeField(), date, metaObject);
-            }
+//        Object createTime = getFieldValByName(autoFillProperties.getCreateTimeField(), metaObject);
+//        Object createUserId = getFieldValByName(autoFillProperties.getCreateUserIdField(), metaObject);
+//        Object createUserName = getFieldValByName(autoFillProperties.getCreateUserNameField(), metaObject);
+//        Object updateTime = getFieldValByName(autoFillProperties.getUpdateTimeField(), metaObject);
+//        Object updateUserId = getFieldValByName(autoFillProperties.getUpdateUserIdField(), metaObject);
+//        Object updateUserName = getFieldValByName(autoFillProperties.getUpdateUserNameField(), metaObject);
+//        if (createTime == null || updateTime == null) {
+//            Date date = new Date();
+//            if (createTime == null) {
+//                setFieldValByName(autoFillProperties.getCreateTimeField(), date, metaObject);
+//            }
+//            if (updateTime == null) {
+//                setFieldValByName(autoFillProperties.getUpdateTimeField(), date, metaObject);
+//            }
+//        }
+
+        ifNullThenSetFieldValue(autoFillProperties.getCreateTimeField(),new Date(),metaObject);
+        ifNullThenSetFieldValue(autoFillProperties.getCreateUserIdField(), LoginUserContextHolder.getUser(),metaObject);
+        ifNullThenSetFieldValue(autoFillProperties.getCreateUserNameField(),new Date(),metaObject);
+        ifNullThenSetFieldValue(autoFillProperties.getUpdateTimeField(),new Date(),metaObject);
+        ifNullThenSetFieldValue(autoFillProperties.getUpdateUserIdField(),new Date(),metaObject);
+        ifNullThenSetFieldValue(autoFillProperties.getUpdateUserNameField(),new Date(),metaObject);
+    }
+
+    private void ifNullThenSetFieldValue(String fieldName, Object data, MetaObject metaObject) {
+        Object fieldValByName = getFieldValByName(fieldName, metaObject);
+        if (fieldValByName == null){
+            setFieldValByName(fieldName,data,metaObject);
         }
     }
 

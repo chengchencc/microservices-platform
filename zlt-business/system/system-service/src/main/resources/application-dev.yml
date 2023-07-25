@@ -1,0 +1,19 @@
+chengch:
+  datasource:
+    url: 81.70.161.37:3306
+    schema: chengch-platform
+    username: root
+    password: 1qaz@WSXcc123
+  test: sample-dev
+  test2: bbbccc
+
+logging:
+  level:
+#    org.springframework.security:
+#      - debug
+#      - info
+#    org.springframework.web: error
+#    org.hibernate.SQL: debug
+#    org.hibernate.engine.QueryParameters: debug
+#    org.hibernate.engine.query.HQLQueryPlan: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace

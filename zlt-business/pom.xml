@@ -19,5 +19,6 @@
         <!-- 搜索中心 -->
         <module>search-center</module>
         <module>multi-tenant</module>
+        <module>system</module>
     </modules>
 </project>

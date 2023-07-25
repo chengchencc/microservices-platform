@@ -1,0 +1,48 @@
+chengch:
+  test: sample
+  test3: test3
+
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sample
+#  elasticsearch:
+#    uris:
+#     - 10.10.20.242:9200
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${chengch.datasource.url}/${chengch.datasource.schema}?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: ${chengch.datasource.username}
+    password: ${chengch.datasource.password}
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+#mybatis-plus:
+#  configuration:
+#    cache-enabled: false
+#    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+##    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  global-config:
+#    db-config:
+#      field-strategy: NOT_NULL
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#      id-type: auto
+#      logic-delete-field: del_tag
+#  mapper-locations: classpath:/mapper/*Mapper.xml
+#  #实体扫描，多个package用逗号或者分号分隔
+#  typeAliasesPackage: com.chengch.demo.elasticsearch.entity

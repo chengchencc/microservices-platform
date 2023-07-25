@@ -23,5 +23,8 @@
         <module>zlt-elasticsearch-spring-boot-starter</module>
         <module>zlt-oss-spring-boot-starter</module>
         <module>zlt-zookeeper-spring-boot-starter</module>
+
+        <module>zlt-jpa-spring-boot-starter</module>
+
     </modules>
 </project>
