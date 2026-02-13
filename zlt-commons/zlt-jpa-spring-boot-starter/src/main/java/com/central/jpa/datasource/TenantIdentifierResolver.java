@@ -1,6 +1,7 @@
 package com.central.jpa.datasource;
 
 import com.central.common.context.TenantContextHolder;
+import com.central.jpa.utils.StringUtils;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.context.TenantIdentifierMismatchException;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomi
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
@@ -18,7 +20,8 @@ public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver
      */
     @Override
     public String resolveCurrentTenantIdentifier() {
-        return TenantContextHolder.getTenant();
+        String tenantId = Optional.ofNullable(TenantContextHolder.getTenant()).orElse(TenantContextHolder.DEFAULT_TENANT_ID);
+        return tenantId;
     }
 
     /**

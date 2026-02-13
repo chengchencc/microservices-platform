@@ -43,8 +43,8 @@ public class Oauth2AuthSuccessHandler implements ServerAuthenticationSuccessHand
         if (StrUtil.isNotEmpty(accountType)) {
             headerValues.add(SecurityConstants.ACCOUNT_TYPE_HEADER, accountType);
         }
-        ServerWebExchange exchange = webFilterExchange.
-        ();
+        ServerWebExchange exchange = webFilterExchange.getExchange();
+
         ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate()
                 .headers(h -> h.addAll(headerValues))
                 .build();

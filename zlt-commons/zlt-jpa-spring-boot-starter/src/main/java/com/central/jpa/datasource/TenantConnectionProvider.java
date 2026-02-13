@@ -58,12 +58,14 @@ public class TenantConnectionProvider extends AbstractDataSourceBasedMultiTenant
     public DataSource createDatasource(String tenantId){
         TenantDetails tenantDetails = tenantDetailService.get(tenantId);
         if (StringUtils.isNotEmpty(tenantDetails.getUrl())){
-            return DataSourceBuilder.create()
-                    .url(tenantDetails.getUrl())
-                    .username(tenantDetails.getName())
-                    .password(tenantDetails.getPassword())
-                    .driverClassName(tenantDetails.getDriverClassName())
-                    .build();
+            // TODO: 多租户时应该放开
+//            return DataSourceBuilder.create()
+//                    .url(tenantDetails.getUrl())
+//                    .username(tenantDetails.getName())
+//                    .password(tenantDetails.getPassword())
+//                    .driverClassName(tenantDetails.getDriverClassName())
+//                    .build();
+            return masterDataSource;
         }else {
             return masterDataSource;
         }

@@ -3,12 +3,10 @@ package com.central.system.dictionary;
 
 import com.central.jpa.domain.entity.AuditEntityBase;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 /**
@@ -19,12 +17,19 @@ import javax.persistence.Table;
  */
 @Getter
 @Setter
+//@ToString
+//@RequiredArgsConstructor
+//@NoArgsConstructor
 @Table
 @Entity
 public class SysDictItem extends AuditEntityBase<String> {
 //    @ApiModelProperty(value = "字典编码:外键")
+    @NonNull
+    @Column(nullable = false)
     private String dictId;
 //    @ApiModelProperty(value = "字典值编码")
+    @NonNull
+    @Column(nullable = false)
     private String code;
 //    @ApiModelProperty(value = "字典值")
     private String value;

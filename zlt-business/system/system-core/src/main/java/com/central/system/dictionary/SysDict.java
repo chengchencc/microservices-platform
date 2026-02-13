@@ -1,6 +1,6 @@
 package com.central.system.dictionary;
 
-import com.central.jpa.domain.entity.AuditEntityBase;
+import com.central.jpa.domain.entity.TenantAuditEntityBase;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ import java.util.Set;
 @Setter
 @Table
 @Entity
-public class SysDict extends AuditEntityBase<String> {
+public class SysDict extends TenantAuditEntityBase<String> {
     private static final long serialVersionUID=1L;
     /**
      * 字典编号
@@ -35,7 +35,8 @@ public class SysDict extends AuditEntityBase<String> {
      */
     private String parentCode;
 
-    @OneToMany(mappedBy = "dict",fetch = FetchType.LAZY)
+//    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "dict",fetch = FetchType.EAGER)
     private Set<SysDictItem> items;
 }
 

@@ -1,9 +1,8 @@
 package com.central.jpa.tenancy;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.lang.annotation.*;
 
 /**
  * Description com.inspur.edp.epp.infrastructure.aop.tenancy
@@ -11,8 +10,10 @@ import java.lang.annotation.Target;
  * date on 2020/3/21
  */
 
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
+@Inherited
+@Transactional
 public @interface TenantContext {
     String tenantId() default "";
     boolean useTenantFilter() default true;

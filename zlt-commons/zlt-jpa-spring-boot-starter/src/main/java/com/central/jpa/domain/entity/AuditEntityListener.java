@@ -32,6 +32,8 @@ public class AuditEntityListener {
         ISession userSession = context.getBean(ISession.class);
         entity.setCreationTime(Clock.now());
         entity.setCreationUserId(userSession.getUserId());
+        entity.setLastModifyTime(Clock.now());
+        entity.setLastModifyUserId(userSession.getUserId());
     }
 
     @PreUpdate
@@ -43,6 +45,7 @@ public class AuditEntityListener {
     @PreRemove
     public void touchForDelete(AuditEntityBase entity){
         ISession userSession = context.getBean(ISession.class);
+        entity.setIsDelete(true);
         entity.setDeletionTime(Clock.now());
         entity.setDeletionUserId(userSession.getUserId());
     }

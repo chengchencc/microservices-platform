@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.central.jpa.CommonConfiguration
+com.central.jpa.CommonConfiguration,\
+com.central.jpa.tenancy.TenantAdvice
